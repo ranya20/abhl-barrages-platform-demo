@@ -1,0 +1,83 @@
+﻿# ============================================================
+# ABHL BARRAGES - Git exclusions
+# ============================================================
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Python
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+**/__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+node_modules/
+dist/
+
+# PostgreSQL / backups
+*.backup
+*.dump
+*.sql.gz
+data/backups/
+database_backups/
+backups_code/
+
+# Données générées / imports / exports
+data/exports/
+data/imports/
+
+# Templates et fichiers Excel métier ABHL
+backend/app/templates/**/*.xlsx
+backend/app/templates/**/*.xls
+backend/app/templates/**/*.xlsm
+
+# Fichiers Excel internes à la racine backend
+backend/*.xlsx
+backend/*.xls
+backend/*.xlsm
+
+# Rapports/tests internes
+backend/controle_*
+backend/reponse_*
+backend/inspection_*
+backend/inventaire_*
+backend/rapport_*
+backend/couverture_*
+backend/extrait_*
+
+# Backups temporaires de code
+*.before_*
+*.bak
+*.old
+*.tmp
+*~
+
+# Logs
+*.log
+logs/
+
+# IDE / Windows
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

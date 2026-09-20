@@ -1,0 +1,827 @@
+/* ============================================================
+   ABHL — THÈME UNIFIÉ DES PAGES MÉTIER
+   Ce fichier est chargé après styles.css.
+   Il harmonise Situation, Annonce, BILAN, Barrages et Imports
+   avec le thème visuel du tableau de bord V12.
+   ============================================================ */
+
+:root {
+  --page-deep: var(--dashv12-deep, #08324c);
+  --page-blue: var(--dashv12-blue, #075f8d);
+  --page-sky: var(--dashv12-sky, #39aeca);
+  --page-green: var(--dashv12-green, #38a86b);
+  --page-bg: var(--dashv12-bg, #edf7f8);
+  --page-text: var(--dashv12-text, #12354a);
+  --page-muted: var(--dashv12-muted, #6d8494);
+  --page-card: rgba(255, 255, 255, 0.72);
+  --page-card-strong: rgba(255, 255, 255, 0.88);
+  --page-border: rgba(8, 50, 76, 0.10);
+  --page-border-strong: rgba(8, 50, 76, 0.16);
+  --page-shadow: 0 9px 24px rgba(8, 50, 76, 0.075);
+  --page-shadow-hover: 0 14px 32px rgba(8, 50, 76, 0.12);
+  --page-radius: 18px;
+  --page-radius-sm: 12px;
+}
+
+/* Portée volontairement limitée aux pages hors dashboard. */
+.page {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  gap: 10px;
+  color: var(--page-text);
+}
+
+.page * {
+  box-sizing: border-box;
+}
+
+/* =========================
+   En-tête commun des modules
+   ========================= */
+.page .page-header {
+  position: relative;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0;
+  padding: 18px 22px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 21px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(255, 255, 255, 0.18), transparent 31%),
+    linear-gradient(130deg, rgba(8, 50, 76, 0.97), rgba(7, 95, 141, 0.88) 57%, rgba(56, 168, 107, 0.74));
+  box-shadow: var(--page-shadow);
+}
+
+.page .page-header::before {
+  content: "ABHL";
+  position: absolute;
+  right: 24px;
+  bottom: -21px;
+  color: rgba(255, 255, 255, 0.065);
+  font-size: 76px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: 3px;
+  pointer-events: none;
+}
+
+.page .page-header::after {
+  content: "Module métier";
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 9.5px;
+  font-weight: 850;
+  letter-spacing: 0.25px;
+}
+
+.page .page-header > div,
+.page .page-header > h2,
+.page .page-header > h1,
+.page .page-header > p {
+  position: relative;
+  z-index: 1;
+}
+
+.page .page-header h1,
+.page .page-header h2 {
+  margin: 0;
+  max-width: 980px;
+  color: #fff;
+  font-size: clamp(23px, 2.3vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -0.6px;
+}
+
+.page .page-header p {
+  margin: 7px 0 0;
+  max-width: 900px;
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* =========================
+   Cartes / panneaux communs
+   ========================= */
+.page .panel,
+.page .info-card,
+.page .totals-card,
+.page .reference-item,
+.page .computed-card,
+.page .selected-barrage-box,
+.page .date-summary,
+.page .save-summary {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: var(--page-card);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--page-shadow);
+}
+
+.page .panel {
+  margin: 0;
+  padding: 16px;
+  border-radius: var(--page-radius);
+}
+
+.page .panel:hover {
+  border-color: rgba(57, 174, 202, 0.20);
+}
+
+.page .panel > h2,
+.page .panel > h3,
+.page .panel > h4,
+.page .section-title-row h3,
+.page .result-block h3,
+.page .subsection h4,
+.page .totals-card h4 {
+  color: var(--page-deep);
+  letter-spacing: -0.2px;
+}
+
+.page .panel > h2,
+.page .panel > h3 {
+  margin-top: 0;
+}
+
+.page .section-title-row,
+.page .premium-section-title {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--page-border);
+}
+
+.page .section-title-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 54px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--page-blue), var(--page-green));
+}
+
+/* =========================
+   Champs et formulaires
+   ========================= */
+.page label {
+  gap: 5px;
+  color: var(--page-text);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.page input,
+.page select,
+.page textarea {
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--page-border);
+  border-radius: 10px;
+  color: var(--page-text);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 700;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.page textarea {
+  min-height: 88px;
+  line-height: 1.45;
+}
+
+.page input:hover,
+.page select:hover,
+.page textarea:hover {
+  border-color: rgba(7, 95, 141, 0.24);
+  background: rgba(255, 255, 255, 0.90);
+}
+
+.page input:focus,
+.page select:focus,
+.page textarea:focus {
+  outline: none;
+  border-color: rgba(7, 95, 141, 0.48);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(57, 174, 202, 0.13);
+}
+
+.page input[type="date"] {
+  min-width: 190px;
+}
+
+.page .input-with-unit {
+  min-height: 36px;
+  border: 1px solid var(--page-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.page .input-with-unit:focus-within {
+  border-color: rgba(7, 95, 141, 0.48);
+  box-shadow: 0 0 0 3px rgba(57, 174, 202, 0.13);
+}
+
+.page .input-with-unit input {
+  background: transparent;
+  box-shadow: none;
+}
+
+.page .input-with-unit small {
+  color: var(--page-muted);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
+/* =========================
+   Boutons
+   ========================= */
+.page button {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--page-border-strong);
+  border-radius: 10px;
+  color: var(--page-blue);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 5px 12px rgba(8, 50, 76, 0.045);
+  font-size: 11px;
+  font-weight: 850;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.page button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  color: var(--page-deep);
+  border-color: rgba(7, 95, 141, 0.28);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 18px rgba(8, 50, 76, 0.09);
+}
+
+.page button.primary,
+.page button.save-button {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--page-blue), var(--page-green));
+  box-shadow: 0 8px 18px rgba(8, 50, 76, 0.12);
+}
+
+.page button.primary:hover:not(:disabled),
+.page button.save-button:hover:not(:disabled) {
+  color: #fff;
+  background: linear-gradient(135deg, #064f77, #2f965f);
+}
+
+.page button:disabled {
+  opacity: 0.52;
+  transform: none;
+  box-shadow: none;
+}
+
+.page .actions,
+.page .export-actions,
+.page .bilan-global-actions,
+.page .bilan-row-actions {
+  gap: 7px;
+}
+
+/* =========================
+   Alertes et états
+   ========================= */
+.page .alert,
+.page .announcement-note,
+.page .export-ready,
+.page .export-warning,
+.page .bilan-check,
+.page .missing-box {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  box-shadow: none;
+}
+
+.page .alert.info,
+.page .announcement-note {
+  color: #155b7d;
+  background: rgba(226, 245, 251, 0.83);
+  border: 1px solid rgba(57, 174, 202, 0.22);
+}
+
+.page .alert.success,
+.page .export-ready,
+.page .bilan-check.success,
+.page .save-summary {
+  color: #17623c;
+  background: rgba(229, 247, 237, 0.86);
+  border: 1px solid rgba(56, 168, 107, 0.20);
+}
+
+.page .alert.error {
+  color: #9d1d1d;
+  background: rgba(255, 240, 240, 0.88);
+  border: 1px solid rgba(157, 29, 29, 0.15);
+}
+
+.page .export-warning,
+.page .bilan-check.warning,
+.page .missing-box {
+  color: #7d5e0d;
+  background: rgba(255, 248, 228, 0.90);
+  border: 1px solid rgba(226, 178, 61, 0.26);
+}
+
+.page .status-badge,
+.page .bilan-status {
+  border: 1px solid rgba(57, 174, 202, 0.15);
+  background: rgba(57, 174, 202, 0.12);
+  color: var(--page-blue);
+  font-size: 10px;
+  font-weight: 850;
+}
+
+/* =========================
+   Situation quotidienne
+   ========================= */
+.page .form-row {
+  align-items: end;
+  gap: 10px;
+}
+
+.page .result-block {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--page-border);
+}
+
+.page .check-line {
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.page .mini-grid,
+.page .cards-grid,
+.page .preview-grid {
+  gap: 9px;
+}
+
+.page .info-card,
+.page .totals-card {
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.page .info-card {
+  min-height: 70px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.page .info-card span {
+  margin-bottom: 4px;
+  color: var(--page-muted);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.page .info-card strong {
+  color: var(--page-deep);
+  font-size: 17px;
+}
+
+.page .totals-card table {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.page .totals-card td {
+  padding: 7px 5px;
+  border-color: var(--page-border);
+  font-size: 11px;
+}
+
+/* =========================
+   Annonce / Calculs
+   ========================= */
+.calculations-page {
+  gap: 10px;
+}
+
+.calculations-page .calculations-toolbar {
+  padding: 14px;
+}
+
+.calculations-page .toolbar-grid {
+  grid-template-columns: minmax(200px, 270px) max-content minmax(250px, 1fr);
+  gap: 10px;
+}
+
+.calculations-page .date-summary {
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.calculations-page .date-summary span,
+.calculations-page .reference-item span,
+.calculations-page .computed-card span {
+  color: var(--page-muted);
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.calculations-page .date-summary strong {
+  color: var(--page-deep);
+  font-size: 11px;
+}
+
+.calculations-page .calculations-layout {
+  grid-template-columns: minmax(520px, 1.08fr) minmax(390px, 0.92fr);
+  gap: 10px;
+}
+
+.calculations-page .input-panel,
+.calculations-page .results-panel {
+  padding: 14px;
+}
+
+.calculations-page .results-panel {
+  top: 90px;
+}
+
+.calculations-page .reference-grid,
+.calculations-page .input-grid,
+.calculations-page .computed-grid {
+  gap: 8px;
+}
+
+.calculations-page .reference-item,
+.calculations-page .computed-card {
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: none;
+  border-color: var(--page-border);
+}
+
+.calculations-page .computed-card strong {
+  color: var(--page-deep);
+  font-size: 16px;
+}
+
+.calculations-page .subsection {
+  margin: 16px 0;
+  padding-top: 14px;
+  border-color: var(--page-border);
+}
+
+.calculations-page .empty-state {
+  min-height: 150px;
+  color: var(--page-muted);
+  border-color: rgba(7, 95, 141, 0.22);
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.calculations-page .check-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 10.5px;
+}
+
+/* =========================
+   BILAN mensuel
+   ========================= */
+.bilan-page {
+  gap: 10px;
+}
+
+.bilan-page .bilan-toolbar,
+.bilan-page .bilan-summary-panel {
+  padding: 14px;
+}
+
+.bilan-page .bilan-toolbar-grid,
+.bilan-page .bilan-summary-grid {
+  gap: 8px;
+}
+
+.bilan-page .bilan-summary-grid > div:not(.bilan-global-actions) {
+  min-height: 58px;
+  padding: 9px 10px;
+  border: 1px solid var(--page-border);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.bilan-page .bilan-summary-grid span {
+  color: var(--page-muted);
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.bilan-page .bilan-table-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.bilan-page .bilan-table-scroll {
+  max-height: calc(100vh - 150px);
+  scrollbar-color: rgba(7, 95, 141, 0.32) transparent;
+  scrollbar-width: thin;
+}
+
+.bilan-page .bilan-table {
+  font-size: 10.5px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.bilan-page .bilan-table th {
+  min-width: 100px;
+  padding: 7px 6px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--page-deep), var(--page-blue));
+  border-color: rgba(255, 255, 255, 0.10);
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.bilan-page .bilan-table td {
+  padding: 6px;
+  color: var(--page-text);
+  background: rgba(255, 255, 255, 0.68);
+  border-color: var(--page-border);
+}
+
+.bilan-page .bilan-table tr:nth-child(even) td {
+  background: rgba(245, 251, 250, 0.84);
+}
+
+.bilan-page .bilan-table .sticky-col {
+  background: rgba(247, 251, 249, 0.98);
+  box-shadow: 5px 0 10px rgba(8, 50, 76, 0.035);
+}
+
+.bilan-page .bilan-table th.sticky-col {
+  background: linear-gradient(135deg, var(--page-deep), var(--page-blue));
+}
+
+.bilan-page .bilan-table .calculated-cell {
+  color: #155b7d;
+  background: rgba(226, 245, 251, 0.62);
+}
+
+.bilan-page .bilan-table input {
+  min-width: 88px;
+  width: 88px;
+  min-height: 31px;
+  padding: 6px 7px;
+  border-radius: 8px;
+  font-size: 10.5px;
+}
+
+.bilan-page .bilan-row-actions button {
+  min-height: 29px;
+  padding: 6px 8px;
+  font-size: 9.5px;
+}
+
+/* =========================
+   Gestion des barrages
+   ========================= */
+.barrage-admin-page {
+  gap: 10px;
+}
+
+.barrage-admin-page .barrage-admin-grid {
+  grid-template-columns: minmax(440px, 0.95fr) minmax(500px, 1.05fr);
+  gap: 14px;
+  padding: 14px;
+}
+
+.barrage-admin-page .barrage-admin-grid > div,
+.barrage-admin-page .barrage-admin-grid > form {
+  min-width: 0;
+}
+
+.barrage-admin-page .barrage-admin-grid h2,
+.barrage-admin-page .bareme-import-panel h2 {
+  margin: 0 0 10px;
+  color: var(--page-deep);
+  font-size: 16px;
+}
+
+.barrage-admin-page .barrage-list-table {
+  max-height: 430px;
+  border: 1px solid var(--page-border);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.48);
+  scrollbar-color: rgba(7, 95, 141, 0.32) transparent;
+  scrollbar-width: thin;
+}
+
+.barrage-admin-page .barrage-list-table table {
+  font-size: 10.5px;
+}
+
+.barrage-admin-page .barrage-list-table th {
+  padding: 8px 7px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--page-deep), var(--page-blue));
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.barrage-admin-page .barrage-list-table td {
+  padding: 8px 7px;
+  color: var(--page-text);
+  border-color: var(--page-border);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.barrage-admin-page .barrage-list-table tr:nth-child(even) td {
+  background: rgba(245, 251, 250, 0.80);
+}
+
+.barrage-admin-page .barrage-list-table tr:hover td,
+.barrage-admin-page .barrage-list-table tr.selected-row td {
+  color: var(--page-deep);
+  background: rgba(57, 174, 202, 0.13);
+}
+
+.barrage-admin-page .selected-barrage-box {
+  margin-top: 10px;
+  padding: 11px;
+  border-color: var(--page-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: none;
+}
+
+.barrage-admin-page .checkbox-grid,
+.barrage-admin-page .restitution-checkboxes {
+  gap: 7px;
+  margin: 9px 0 13px;
+}
+
+.barrage-admin-page .restitution-checkboxes {
+  max-height: 220px;
+  padding: 9px;
+  border-color: var(--page-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.50);
+}
+
+.barrage-admin-page .checkbox-label {
+  min-height: 30px;
+  padding: 5px 7px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid transparent;
+  font-size: 10.5px;
+}
+
+.barrage-admin-page .checkbox-label:hover {
+  border-color: rgba(57, 174, 202, 0.22);
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.barrage-admin-page .checkbox-label input {
+  min-height: auto;
+  accent-color: var(--page-green);
+}
+
+.barrage-admin-page .bareme-import-panel {
+  margin-top: 0;
+  padding: 14px;
+}
+
+/* =========================
+   Page Imports / attente
+   ========================= */
+.page > .panel:only-of-type {
+  min-height: 180px;
+}
+
+/* =========================
+   Scrollbars des pages métier
+   ========================= */
+.page *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.page *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page *::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(7, 95, 141, 0.26);
+  background-clip: padding-box;
+}
+
+.page *::-webkit-scrollbar-thumb:hover {
+  background: rgba(7, 95, 141, 0.42);
+  background-clip: padding-box;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 1180px) {
+  .calculations-page .calculations-layout,
+  .barrage-admin-page .barrage-admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calculations-page .results-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 900px) {
+  .page .page-header {
+    min-height: 100px;
+    padding: 16px;
+  }
+
+  .page .page-header::after {
+    display: none;
+  }
+
+  .calculations-page .toolbar-grid,
+  .bilan-page .bilan-toolbar-grid,
+  .bilan-page .bilan-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page input[type="date"] {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .page {
+    gap: 8px;
+  }
+
+  .page .page-header {
+    border-radius: 16px;
+  }
+
+  .page .page-header h1,
+  .page .page-header h2 {
+    font-size: 22px;
+  }
+
+  .page .panel {
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  .page .actions,
+  .page .export-actions,
+  .page .bilan-global-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .page .actions button,
+  .page .export-actions button,
+  .page .bilan-global-actions button {
+    width: 100%;
+  }
+
+  .page .input-grid,
+  .page .reference-grid,
+  .page .computed-grid,
+  .page .mini-grid,
+  .page .preview-grid,
+  .barrage-admin-page .checkbox-grid,
+  .barrage-admin-page .restitution-checkboxes {
+    grid-template-columns: 1fr;
+  }
+}

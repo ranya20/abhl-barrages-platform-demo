@@ -1,0 +1,358 @@
+.baremes-v27-page {
+  display: grid;
+  gap: 18px;
+}
+
+.baremes-v27-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.baremes-v27-header-actions,
+.baremes-v27-actions,
+.baremes-v27-inline {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.baremes-v27-summary {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.6fr) repeat(4, minmax(115px, 0.55fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.baremes-v27-summary > label,
+.baremes-v27-kpi {
+  background: #fff;
+  border: 1px solid #e4eaf0;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.baremes-v27-summary label {
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+}
+
+.baremes-v27-summary select {
+  width: 100%;
+}
+
+.baremes-v27-kpi {
+  display: grid;
+  gap: 5px;
+}
+
+.baremes-v27-kpi span {
+  color: #6b7785;
+  font-size: 0.82rem;
+}
+
+.baremes-v27-kpi strong {
+  font-size: 1.45rem;
+}
+
+.baremes-v27-layout {
+  display: grid;
+  grid-template-columns: minmax(430px, 0.9fr) minmax(580px, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.baremes-v27-section-title,
+.baremes-v27-editor-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.baremes-v27-section-title h2,
+.baremes-v27-editor-title h3 {
+  margin: 0;
+}
+
+.baremes-v27-section-title p {
+  margin: 4px 0 0;
+  color: #6b7785;
+}
+
+.baremes-v27-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #e4eaf0;
+  border-radius: 12px;
+}
+
+.baremes-v27-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.baremes-v27-table th,
+.baremes-v27-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #edf1f4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.baremes-v27-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f6f9fb;
+  color: #344454;
+  font-size: 0.82rem;
+}
+
+.baremes-v27-table tbody tr {
+  cursor: pointer;
+}
+
+.baremes-v27-table tbody tr:hover,
+.baremes-v27-table .selected-row {
+  background: #f0f7fb;
+}
+
+.baremes-v27-table td strong,
+.baremes-v27-table td small {
+  display: block;
+}
+
+.baremes-v27-table td small {
+  color: #7a8793;
+  margin-top: 3px;
+}
+
+.baremes-v27-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.status-publie {
+  color: #17643a;
+  background: #e6f6ed;
+}
+
+.status-brouillon {
+  color: #7a5410;
+  background: #fff4d8;
+}
+
+.status-archive {
+  color: #6b7280;
+  background: #eef0f2;
+}
+
+.baremes-v27-resolver,
+.baremes-v27-period-box,
+.baremes-v27-import-box,
+.baremes-v27-points-read {
+  margin-top: 18px;
+  border-top: 1px solid #e8edf1;
+  padding-top: 16px;
+}
+
+.baremes-v27-resolver h3,
+.baremes-v27-period-box h3,
+.baremes-v27-import-box h3 {
+  margin: 0 0 8px;
+}
+
+.baremes-v27-resolved {
+  margin-top: 10px;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f4f9fc;
+  border: 1px solid #d9e9f3;
+}
+
+.baremes-v27-resolved em {
+  color: #697783;
+  font-size: 0.82rem;
+}
+
+.baremes-v27-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.baremes-v27-meta-grid > div {
+  border: 1px solid #e5eaee;
+  border-radius: 10px;
+  padding: 11px 12px;
+  display: grid;
+  gap: 5px;
+}
+
+.baremes-v27-meta-grid span {
+  color: #6d7985;
+  font-size: 0.78rem;
+}
+
+.baremes-v27-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.baremes-v27-form-grid label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.baremes-v27-form-grid label small {
+  color: #6f7d88;
+  font-weight: 400;
+}
+
+.baremes-v27-form-grid .span-2 {
+  grid-column: 1 / -1;
+}
+
+.baremes-v27-form-grid textarea {
+  min-height: 78px;
+}
+
+.baremes-v27-import-box {
+  padding: 15px;
+  border: 1px dashed #b7cad8;
+  border-radius: 12px;
+  background: #f9fcfe;
+}
+
+.baremes-v27-import-preview {
+  margin-top: 12px;
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #dde8ef;
+  overflow-wrap: anywhere;
+}
+
+.baremes-v27-points-editor {
+  max-height: 470px;
+  overflow: auto;
+  border: 1px solid #e4eaf0;
+  border-radius: 12px;
+}
+
+.baremes-v27-points-editor .baremes-v27-table {
+  min-width: 760px;
+}
+
+.baremes-v27-points-editor input {
+  width: 100%;
+  min-width: 135px;
+}
+
+.points-read-wrap {
+  max-height: 480px;
+}
+
+.audit-wrap {
+  max-height: 330px;
+}
+
+.baremes-v27-empty {
+  text-align: center;
+  padding: 42px 18px;
+  color: #697783;
+}
+
+.baremes-v27-actions .danger,
+.icon-danger {
+  color: #9b2c2c;
+  border-color: #efc9c9;
+  background: #fff8f8;
+}
+
+.baremes-v27-actions .publish {
+  color: #fff;
+  background: #17643a;
+  border-color: #17643a;
+}
+
+.icon-danger {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 1.25rem;
+}
+
+.sticky-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  margin-top: 15px;
+  padding: 12px 0 2px;
+  background: linear-gradient(to top, #fff 72%, rgba(255,255,255,0));
+}
+
+@media (max-width: 1180px) {
+  .baremes-v27-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .baremes-v27-summary > label {
+    grid-column: 1 / -1;
+  }
+
+  .baremes-v27-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .baremes-v27-header {
+    flex-direction: column;
+  }
+
+  .baremes-v27-summary,
+  .baremes-v27-meta-grid,
+  .baremes-v27-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .baremes-v27-form-grid .span-2 {
+    grid-column: auto;
+  }
+}
+
+/* === ABHL V28 AUTO NORMAL UI START === */
+.baremes-v27-page input[readonly] {
+  background: #f2f7f8;
+  color: #244552;
+  cursor: default;
+  border-style: dashed;
+}
+
+.baremes-v27-page .alert.warning {
+  background: #fff8df;
+  border: 1px solid #ecd68e;
+  color: #765a10;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+}
+/* === ABHL V28 AUTO NORMAL UI END === */

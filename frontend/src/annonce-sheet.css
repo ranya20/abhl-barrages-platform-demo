@@ -1,0 +1,412 @@
+/* Feuille mensuelle Annonce — interface inspirée du classeur Excel officiel */
+.annonce-workbook-page {
+  min-width: 0;
+}
+
+.annonce-workbook-toolbar {
+  display: grid;
+  grid-template-columns: minmax(360px, 1.4fr) auto minmax(220px, 0.75fr);
+  gap: 16px;
+  align-items: end;
+  padding: 17px 19px;
+}
+
+.annonce-period-controls,
+.annonce-workbook-actions {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.annonce-period-controls label {
+  display: grid;
+  gap: 6px;
+  min-width: 145px;
+  color: #244b3a;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.annonce-period-controls input,
+.annonce-period-controls select,
+.annonce-sheet-summary input {
+  min-height: 42px;
+  border: 1px solid rgba(15, 81, 50, 0.18);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.annonce-workbook-context {
+  display: grid;
+  gap: 2px;
+  min-height: 62px;
+  padding: 10px 13px;
+  border: 1px solid rgba(8, 145, 178, 0.17);
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(236, 254, 255, 0.76), rgba(240, 253, 244, 0.85));
+}
+
+.annonce-workbook-context span,
+.annonce-sheet-summary span {
+  color: #648071;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.annonce-workbook-context strong {
+  color: #0b4f78;
+  text-transform: capitalize;
+}
+
+.annonce-workbook-context small {
+  color: #61766d;
+}
+
+.annonce-barrage-tabs-panel {
+  padding: 8px;
+  overflow: hidden;
+}
+
+.annonce-barrage-tabs {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 4px;
+  scrollbar-width: thin;
+}
+
+.annonce-barrage-tabs button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid rgba(15, 81, 50, 0.16);
+  border-radius: 10px 10px 4px 4px;
+  background: #f6faf8;
+  color: #294b3c;
+  font-size: 0.8rem;
+  font-weight: 850;
+  box-shadow: none;
+}
+
+.annonce-barrage-tabs button:hover {
+  border-color: rgba(8, 145, 178, 0.38);
+  background: #edf9fb;
+}
+
+.annonce-barrage-tabs button.active {
+  border-color: #0b7396;
+  background: linear-gradient(135deg, #0d5f82, #1593a8);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(13, 95, 130, 0.2);
+}
+
+.annonce-barrage-tabs button em {
+  display: inline-grid;
+  place-items: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #d9f4ff;
+  color: #075d83;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.annonce-barrage-tabs button.active em {
+  background: #fff;
+  color: #075d83;
+}
+
+.annonce-sheet-summary {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.8fr) minmax(160px, 0.65fr) minmax(280px, 1fr) minmax(320px, 1.4fr);
+  gap: 13px;
+  align-items: stretch;
+  padding: 14px 16px;
+}
+
+.annonce-sheet-summary > div:not(.annonce-auto-info),
+.annonce-sheet-summary > label {
+  display: grid;
+  gap: 5px;
+  align-content: center;
+  padding: 9px 11px;
+  border: 1px solid rgba(15, 81, 50, 0.13);
+  border-radius: 11px;
+  background: #f8fbfa;
+}
+
+.annonce-sheet-summary > label {
+  color: #244b3a;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.annonce-sheet-summary strong {
+  color: #0c4f72;
+  text-transform: capitalize;
+}
+
+.annonce-auto-info {
+  display: grid;
+  gap: 4px;
+  align-content: center;
+  padding: 10px 13px;
+  border-left: 4px solid #0b8da4;
+  border-radius: 10px;
+  background: #eefbfc;
+  color: #355e68;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.annonce-auto-info strong {
+  color: #086c87;
+}
+
+.annonce-sheet-panel {
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(10, 91, 124, 0.16);
+}
+
+.annonce-sheet-scroll {
+  max-height: calc(100vh - 230px);
+  overflow: auto;
+  background: #fff;
+}
+
+.annonce-sheet-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.annonce-sheet-table th,
+.annonce-sheet-table td {
+  min-width: 112px;
+  height: 43px;
+  padding: 6px 7px;
+  border-right: 1px solid #dce8e4;
+  border-bottom: 1px solid #dce8e4;
+  background: #fff;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.annonce-sheet-table th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  min-height: 58px;
+  background: #0f5d88;
+  color: #fff;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.annonce-sheet-table th.editable-heading {
+  background: #176fa0;
+}
+
+.annonce-sheet-table th.calculated-heading {
+  background: #0e536f;
+}
+
+.annonce-sheet-table th.status-heading {
+  background: #154d3d;
+}
+
+.annonce-sheet-table .sticky-date {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  min-width: 106px;
+  background: #f4faf7;
+  text-align: left;
+}
+
+.annonce-sheet-table th.sticky-date {
+  z-index: 7;
+  background: #0b4e74;
+  text-align: center;
+}
+
+.annonce-sheet-table .editable-cell {
+  padding: 4px;
+  background: #fff;
+}
+
+.annonce-sheet-table .editable-cell input {
+  width: 100%;
+  min-width: 96px;
+  height: 34px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: #fff;
+  color: #183c32;
+  text-align: right;
+  font: inherit;
+  font-weight: 700;
+}
+
+.annonce-sheet-table .editable-cell input:hover {
+  border-color: rgba(8, 145, 178, 0.3);
+  background: #f8feff;
+}
+
+.annonce-sheet-table .editable-cell input:focus {
+  border-color: #0a91b2;
+  outline: 2px solid rgba(10, 145, 178, 0.16);
+  background: #fff;
+}
+
+.annonce-sheet-table .calculated-cell {
+  min-width: 125px;
+  background: #edf5f8;
+  color: #164f68;
+  font-weight: 750;
+}
+
+.annonce-sheet-table .status-cell {
+  min-width: 116px;
+  background: #f7faf8;
+  text-align: center;
+}
+
+.annonce-sheet-table tr.row-dirty .sticky-date strong::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 7px;
+  border-radius: 50%;
+  background: #0a91b2;
+  vertical-align: middle;
+}
+
+.annonce-sheet-table tr.row-incomplete td {
+  background-color: #fffaf0;
+}
+
+.annonce-sheet-table tr.row-incomplete .calculated-cell {
+  background-color: #fff4d9;
+}
+
+.annonce-sheet-table tr.row-error td {
+  background-color: #fff2f2;
+}
+
+.annonce-row-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #edf2ef;
+  color: #52635b;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.annonce-row-status.calculating,
+.annonce-row-status.pending {
+  background: #e7f6fb;
+  color: #08698a;
+}
+
+.annonce-row-status.calculated,
+.annonce-row-status.ready,
+.annonce-row-status.saved {
+  background: #e6f7ed;
+  color: #17663a;
+}
+
+.annonce-row-status.incomplete {
+  background: #fff0c9;
+  color: #855d00;
+}
+
+.annonce-row-status.error {
+  background: #ffe5e5;
+  color: #aa2020;
+}
+
+.annonce-sheet-legend {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3px 6px 10px;
+  color: #60736a;
+  font-size: 0.76rem;
+}
+
+.annonce-sheet-legend span {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.annonce-sheet-legend i {
+  display: inline-block;
+  width: 16px;
+  height: 12px;
+  border: 1px solid #d8e5e0;
+  border-radius: 3px;
+}
+
+.annonce-sheet-legend i.editable {
+  background: #fff;
+}
+
+.annonce-sheet-legend i.calculated {
+  background: #edf5f8;
+}
+
+.annonce-sheet-legend i.dirty {
+  width: 9px;
+  height: 9px;
+  border: 0;
+  border-radius: 50%;
+  background: #0a91b2;
+}
+
+@media (max-width: 1180px) {
+  .annonce-workbook-toolbar,
+  .annonce-sheet-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .annonce-workbook-toolbar,
+  .annonce-sheet-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .annonce-period-controls,
+  .annonce-workbook-actions {
+    align-items: stretch;
+  }
+
+  .annonce-period-controls label,
+  .annonce-period-controls button,
+  .annonce-workbook-actions button {
+    flex: 1 1 100%;
+  }
+}
